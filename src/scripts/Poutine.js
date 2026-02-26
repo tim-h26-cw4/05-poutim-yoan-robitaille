@@ -16,14 +16,26 @@ export default class Poutine {
       const type = this.types[i];
       type.classList.remove('is-active');
     }
-    e.currentTarget.classList.toggle('is-active');
+
+    if (e.currentTarget.classList.contains('is-active')) {
+      e.currentTarget.classList.remove('is-active');
+    } else {
+      e.currentTarget.classList.add('is-active');
+    }
+
     this.selectedType = e.target.innerText;
     this.updatePhoto();
   }
 
   updatePhoto() {
     const img = this.element.querySelector('.poutine__image');
-    img.classList.toggle('is-active');
+
+    if (img.classList.contains('is-active')) {
+      this.selectedType = 'poutine';
+      img.classList.remove('is-active');
+    } else {
+      img.classList.add('is-active');
+    }
     img.src = `assets/images/${this.selectedType}.png`;
   }
 }
