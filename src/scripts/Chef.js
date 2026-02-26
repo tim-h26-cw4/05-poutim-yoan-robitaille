@@ -23,7 +23,26 @@ export default class Chef {
     this.container.innerText = '';
     const nbpoutine = this.element.querySelectorAll('.button.is-active');
     const total = nbpoutine.length;
-    console.log(total);
+    this.createHeader();
+    this.createListItem(nbpoutine);
+    this.createFooter(total);
+  }
+
+  createHeader() {
+    const h2 = document.createElement('h2');
+    h2.innerText = 'Voici le résumé de votre commande';
+    this.container.appendChild(h2);
+  }
+  createListItem(nbpoutine) {
+    for (let i = 0; i < nbpoutine.length; i++) {
+      const nbpout = nbpoutine[i];
+      const type = nbpout.innerText;
+      const p = document.createElement('p');
+      p.innerText = `Poutine : #${i + 1} - ${type}`;
+      this.container.appendChild(p);
+    }
+  }
+  createFooter(total) {
     const p = document.createElement('p');
     p.innerText = `Nombre total de poutine(s) : ${total}`;
     this.container.appendChild(p);
