@@ -12,15 +12,16 @@ export default class Poutine {
     }
   }
   selectType(e) {
-    for (let i = 0; i < this.types.length; i++) {
-      const type = this.types[i];
-      type.classList.remove('is-active');
-    }
+    const clicked = e.currentTarget;
 
-    if (e.currentTarget.classList.contains('is-active')) {
-      e.currentTarget.classList.remove('is-active');
+    if (clicked.classList.contains('is-active')) {
+      clicked.classList.remove('is-active');
     } else {
-      e.currentTarget.classList.add('is-active');
+      for (let i = 0; i < this.types.length; i++) {
+        const type = this.types[i];
+        type.classList.remove('is-active');
+      }
+      clicked.classList.add('is-active');
     }
 
     this.selectedType = e.target.innerText;
