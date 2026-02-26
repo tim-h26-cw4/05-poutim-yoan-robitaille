@@ -19,7 +19,15 @@ export default class Chef {
     send.addEventListener('click', this.sendOrder.bind(this));
   }
 
-  sendOrder() {}
+  sendOrder() {
+    this.container.innerText = '';
+    const nbpoutine = this.element.querySelectorAll('.button.is-active');
+    const total = nbpoutine.length;
+    console.log(total);
+    const p = document.createElement('p');
+    p.innerText = `Nombre total de poutine(s) : ${total}`;
+    this.container.appendChild(p);
+  }
 }
 
 // La ligne suivante devrait être au TOUT début du init() du Main

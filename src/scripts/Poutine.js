@@ -18,5 +18,12 @@ export default class Poutine {
     }
     e.currentTarget.classList.add('is-active');
     this.selectedType = e.target.innerText;
+    this.updatePhoto();
+  }
+
+  updatePhoto() {
+    const img = this.element.querySelector('.poutine__image');
+    img.classList.add('is-active');
+    img.src = `assets/images/${this.selectedType}.png`;
   }
 }
